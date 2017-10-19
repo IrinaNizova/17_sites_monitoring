@@ -33,6 +33,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument("file_with_hosts", help="write path to file with urls for checking")
     file_with_hosts = parser.parse_args().file_with_hosts
+
     file_names = load_urls4check(file_with_hosts)
     for file_name in file_names:
         is_server_respond_ok = is_server_respond_with_200(file_name)
@@ -41,6 +42,7 @@ if __name__ == '__main__':
             break
         print("Site {} {}responds to requests"
               .format(file_name, '' if is_server_respond_with_200(file_name) else 'not '))
+
         exp_date = get_domain_expiration_date(file_name)
         print("Its domain name paid for {} than a month"
               .format('more' if check_expiration_date(exp_date) else ''))

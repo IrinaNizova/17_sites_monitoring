@@ -26,7 +26,7 @@ def get_domain_expiration_date(domain_name):
 
 
 def check_expiration_date(expiration_date):
-    return (expiration_date - relativedelta(months=1)) >= datetime.now()
+    return expiration_date - relativedelta(months=1) >= datetime.now()
 
 
 if __name__ == '__main__':

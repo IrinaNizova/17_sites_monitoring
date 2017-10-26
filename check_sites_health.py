@@ -7,7 +7,7 @@ from dateutil.relativedelta import relativedelta
 
 def load_urls4check(path):
     with open(path) as urls_file:
-        return [row.strip() for row in [row.strip() for row in urls_file]]
+        return [row.strip() for row in urls_file]
 
 
 def is_server_respond_with_200(url):
@@ -41,8 +41,8 @@ if __name__ == '__main__':
             print("Site {} not avalible".format(file_name))
             break
         print("Site {} {}responds to requests"
-              .format(file_name, '' if is_server_respond_with_200(file_name) else 'not '))
+              .format(file_name, '' if is_server_respond_ok else 'not '))
 
         exp_date = get_domain_expiration_date(file_name)
         print("Its domain name paid for {} than a month"
-              .format('more' if check_expiration_date(exp_date) else ''))
+              .format('more' if check_expiration_date(exp_date) else 'less'))
